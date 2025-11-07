@@ -38,3 +38,37 @@ variable "env_names" {
     description = "Список окружений."
     default = ["develop"]
 }
+
+variable "vm_params" {
+    type = list(object({
+        username = string
+        user_groups = list(string)
+        image_family = string
+        cores = number
+        memory = number
+        core_fraction = number
+        preemptible = bool
+        platform_id = string
+        nat = bool
+        disk_volume = number
+        packages = list(string)
+    }))
+    description = "Параметры виртуальной машины."
+}
+
+variable "vm_ssh_key_path" {
+    type = string
+    default = "~/.ssh/id_ed25519.pub"
+    description = "Путь до публичного ssh ключа для подключения к ВМ."
+}
+
+variable "vm_metadata" {
+    type = map(string)
+    description = "Метаданные ВМ."
+}
+
+variable "vm_docker_gpg_keyid" {
+    type = string
+    default = "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
+    description = "Отпечаток GPG ключа APT репозитория Docker"
+}

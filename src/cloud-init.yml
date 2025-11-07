@@ -1,0 +1,17 @@
+#cloud-config
+
+apt:
+  sources:
+    docker.list:
+      source: deb [arch=amd64] https://download.docker.com/linux/ubuntu $RELEASE stable
+      keyid: ${docker_gpg_keyid}
+
+users:
+  - name: ${vm_username}
+    ssh-authorized-keys: ${ssh_pub_key}
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: ${user_groups}
+    shell: /bin/bash
+
+packages:%{ for pkg in jsondecode(packages) }
+  - ${pkg}%{ endfor }
