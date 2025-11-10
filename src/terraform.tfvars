@@ -16,3 +16,12 @@ vm_params = [{
         "docker-ce", "docker-ce-cli", "containerd.io", "docker-buildx-plugin","docker-compose-plugin"
     ]
 }]
+db_cluster_params = [{
+    environment = "PRODUCTION"
+    version = "8.0"
+    deletion_protection = false
+    description = "MySQL кластер"
+    resource_preset_id = "b1.medium"
+    disk_size = 10
+    disk_type_id = "network-hdd"
+}]

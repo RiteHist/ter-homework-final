@@ -26,7 +26,7 @@ resource "yandex_compute_instance" "web_vm" {
         preemptible = var.vm_params[0].preemptible
     }
     metadata = local.vm_metadata_combined
-
+    depends_on = [yandex_mdb_mysql_user.db_user]
 }
 
 data "template_file" "cloud-init" {

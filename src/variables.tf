@@ -72,3 +72,35 @@ variable "vm_docker_gpg_keyid" {
     default = "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
     description = "Отпечаток GPG ключа APT репозитория Docker"
 }
+
+variable "db_cluster_params" {
+    type = list(object(
+        {
+            environment = string
+            version = string
+            deletion_protection = bool
+            description = string
+            resource_preset_id = string
+            disk_size = number
+            disk_type_id = string
+        }
+    ))
+}
+
+variable "db_params" {
+    type = map(string)
+    default = {
+        name = "test"
+        user = "me"
+    }
+}
+
+variable "db_password" {
+    sensitive = true
+    type = string
+}
+
+variable "db_user_priviliges" {
+    type = list(string)
+    default = ["ALL"]
+}
