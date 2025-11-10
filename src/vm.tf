@@ -20,6 +20,7 @@ resource "yandex_compute_instance" "web_vm" {
     network_interface {
         nat = var.vm_params[0].nat
         subnet_id = module.vpc.subnet_info[var.resource_names_list[0]].id
+        security_group_ids = [yandex_vpc_security_group.web-sg.id]
     }
     scheduling_policy {
         preemptible = var.vm_params[0].preemptible
