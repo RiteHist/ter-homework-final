@@ -1,3 +1,5 @@
+# Общие переменные
+
 variable "subnet_cidr_list" {
     type = list(string)
     description = "Список CIDR для подсетей."
@@ -39,6 +41,8 @@ variable "env_names" {
     default = ["develop"]
 }
 
+# Переменные для VM
+
 variable "vm_params" {
     type = list(object({
         username = string
@@ -73,6 +77,8 @@ variable "vm_docker_gpg_keyid" {
     description = "Отпечаток GPG ключа APT репозитория Docker"
 }
 
+# Переменные для DB
+
 variable "db_cluster_params" {
     type = list(object(
         {
@@ -103,4 +109,26 @@ variable "db_password" {
 variable "db_user_priviliges" {
     type = list(string)
     default = ["ALL"]
+}
+
+# Переменные для Registry
+
+variable "regsitry_docker_image_name" {
+    type = string
+    default = "python-web"
+}
+
+variable "registry_docker_image_tags" {
+    type = list(string)
+    default = ["1.0", "latest"]
+}
+
+variable "registry_address" {
+    type = string
+    default = "cr.yandex"
+}
+
+variable "dockerfile_path" {
+    type = string
+    default = "./python-web/."
 }
