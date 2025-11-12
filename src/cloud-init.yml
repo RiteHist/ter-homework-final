@@ -23,7 +23,7 @@ runcmd:
   - export MYSQL_DATABASE=${mysql_database}
   - git clone -b dev --single-branch https://github.com/RiteHist/ter-homework-final.git /opt/app
   - cd /opt/app/src/python-web
-  - docker-compose up -d
+  - docker compose up -d
 
 packages:%{ for pkg in jsondecode(packages) }
   - ${pkg}%{ endfor }
