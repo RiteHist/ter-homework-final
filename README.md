@@ -7,7 +7,7 @@
 
 Созданная сеть с двумя подсетями в Yandex Console:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/1.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/1.PNG?raw=true)
 
 ### Создание VM:
 
@@ -15,13 +15,13 @@
 
 Скриншот созданной VM в Yandex Console:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/2.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/2.PNG?raw=true)
 
 Для VM описана группа безопасности в [файле security.tf](https://github.com/RiteHist/ter-homework-final/blob/main/src/security.tf).
 
 Скриншот созданной группы безопасности в Yandex Console:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/3.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/3.PNG?raw=true)
 
 ### Создание Managed Service for MySQL:
 
@@ -29,7 +29,7 @@
 
 Скриншот созданного кластера в Yandex Console:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/4.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/4.PNG?raw=true)
 
 ### Создание Container Registry:
 
@@ -37,7 +37,7 @@
 
 Скришот созданного Registry в Yandex Console:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/5.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/5.PNG?raw=true)
 
 ## Задание 2:
 
@@ -45,7 +45,7 @@
 
 Скриншот проверки, что Docker и Docker compose успешно установились на VM:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/6.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/6.PNG?raw=true)
 
 ## Задание 3:
 
@@ -59,12 +59,12 @@
 
 Скриншот запущенных контейнеров на VM:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/7.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/7.PNG?raw=true)
 
 Скриншот проверки доступности приложения через https://check-host.net:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/8.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/8.PNG?raw=true)
 
 Скриншот выборки из БД, показыающий, что приложение корректно сохраняет данные:
 
-![alt text](https://github.com/ritehist/virt-homework-final/blob/main/media/9.PNG?raw=true)
+![alt text](https://github.com/ritehist/ter-homework-final/blob/main/media/9.PNG?raw=true)
