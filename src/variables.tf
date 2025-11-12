@@ -12,7 +12,7 @@ variable "subnet_cidr_list" {
 
 variable "resource_names_list" {
     type = list(string)
-    description = "Список имен ресурсов, которым нужна отдельаня подсеть. Каждому имени должен соответствовать отдельный CIDR в subnet_cidr_list."
+    description = "Список имен ресурсов, которым нужна отдельная подсеть. Каждому имени должен соответствовать отдельный CIDR в subnet_cidr_list."
     default = ["web", "db"]
     validation {
         condition = length(var.subnet_cidr_list) == length(var.resource_names_list)
