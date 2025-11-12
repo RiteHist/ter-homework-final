@@ -13,7 +13,7 @@ vm_params = [{
     nat = true
     disk_volume = 10
     packages = [
-        "docker-ce", "docker-ce-cli", "containerd.io", "docker-buildx-plugin","docker-compose-plugin", "jq"
+        "docker-ce", "docker-ce-cli", "containerd.io", "docker-buildx-plugin","docker-compose-plugin", "jq", "git"
     ]
 }]
 db_cluster_params = [{

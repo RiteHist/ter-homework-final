@@ -16,7 +16,14 @@ users:
 runcmd:
   - 'TOKEN=$(curl -s -H "Metadata-Flavor: Google" "http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token" | jq -r .access_token)'
   - echo "$TOKEN" | docker login --username iam --password-stdin cr.yandex
-  - docker pull ${docker_image}
+  - export DOCKER_IMAGE=${docker_image}
+  - export MYSQL_HOST=${mysql_host}
+  - export MYSQL_USER=${mysql_user}
+  - export MYSQL_PASSWORD=${mysql_password}
+  - export MYSQL_DATABASE=${mysql_database}
+  - git clone -b dev --single-branch https://github.com/RiteHist/ter-homework-final.git /opt/app
+  - cd /opt/app/src/python-web
+  - docker-compose up -d
 
 packages:%{ for pkg in jsondecode(packages) }
   - ${pkg}%{ endfor }

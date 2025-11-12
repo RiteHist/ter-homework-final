@@ -40,5 +40,9 @@ data "template_file" "cloud-init" {
         packages = jsonencode(var.vm_params[0].packages)
         docker_gpg_keyid = var.vm_docker_gpg_keyid
         docker_image = module.docker.docker_image_name
+        mysql_host = yandex_mdb_mysql_cluster.mysql-cluster.host[0].fqdn
+        mysql_user = var.db_params.user
+        mysql_password = var.db_password
+        mysql_database = var.db_params.name
     }
 }
