@@ -26,6 +26,7 @@ resource "yandex_compute_instance" "web_vm" {
         preemptible = var.vm_params[0].preemptible
     }
     metadata = local.vm_metadata_combined
+    service_account_id = yandex_iam_service_account.registry-puller.id
     depends_on = [yandex_mdb_mysql_user.db_user]
 }
 
@@ -38,5 +39,6 @@ data "template_file" "cloud-init" {
         user_groups = jsonencode(var.vm_params[0].user_groups)
         packages = jsonencode(var.vm_params[0].packages)
         docker_gpg_keyid = var.vm_docker_gpg_keyid
+        docker_image = module.docker.docker_image_name
     }
 }

@@ -2,11 +2,17 @@ resource "yandex_container_registry" "registry" {
     name = "${var.env_names[0]}-registry"
 }
 
-# resource "yandex_container_registry_ip_permission" "permissions" {
-#     registry_id = yandex_container_registry.registry.id
-#     pull = [var.subnet_cidr_list[0]]
-#     depends_on = [module.vpc]
-# }
+resource "yandex_iam_service_account" "registry-puller" {
+    name = "${var.env_names[0]}-registry-puller"
+}
+
+resource "yandex_container_registry_iam_binding" "binding" {
+    registry_id = yandex_container_registry.registry.id
+    role = "container-registry.images.puller"
+    members = [
+        "serviceAccount:${yandex_iam_service_account.registry-puller.id}"
+    ]
+}
 
 module "docker" {
     source = "./docker"

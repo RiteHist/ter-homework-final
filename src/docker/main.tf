@@ -26,4 +26,5 @@ resource "docker_image" "image" {
 
 resource "docker_registry_image" "image-remote" {
     name = docker_image.image.name
+    keep_remotely = false
 }
