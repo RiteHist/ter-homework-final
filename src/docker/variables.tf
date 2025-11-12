@@ -28,3 +28,9 @@ variable "dockerfile_path" {
     type = string
     description = "Путь до Dockerfile."
 }
+
+variable "keep_image_locally" {
+    type = bool
+    description = "Поведение относительно образа при terraform delete."
+    default = false
+}

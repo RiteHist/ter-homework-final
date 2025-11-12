@@ -1,5 +1,5 @@
 resource "yandex_mdb_mysql_cluster" "mysql-cluster" {
-    name = "${var.env_names[0]}-cluster"
+    name = "${var.env_names[0]}-${var.resource_names_list[1]}-${var.resource_type_list[1]}"
     description = var.db_cluster_params[0].description
     environment = var.db_cluster_params[0].environment
     network_id = module.vpc.network_info.id

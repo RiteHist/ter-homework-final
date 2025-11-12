@@ -21,7 +21,7 @@ resource "docker_image" "image" {
     build {
         context = var.dockerfile_path
     }
-    keep_locally = false
+    keep_locally = var.keep_image_locally
 }
 
 resource "docker_registry_image" "image-remote" {

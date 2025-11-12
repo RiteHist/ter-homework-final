@@ -1,14 +1,14 @@
 resource "yandex_container_registry" "registry" {
-    name = "${var.env_names[0]}-registry"
+    name = "${var.env_names[0]}-${var.resource_type_list[2]}"
 }
 
 resource "yandex_iam_service_account" "registry-puller" {
-    name = "${var.env_names[0]}-registry-puller"
+    name = "${yandex_container_registry.registry.name}-puller"
 }
 
 resource "yandex_container_registry_iam_binding" "binding" {
     registry_id = yandex_container_registry.registry.id
-    role = "container-registry.images.puller"
+    role = var.registry_roles[0]
     members = [
         "serviceAccount:${yandex_iam_service_account.registry-puller.id}"
     ]

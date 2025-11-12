@@ -12,7 +12,7 @@ variable "subnet_cidr_list" {
 
 variable "resource_names_list" {
     type = list(string)
-    description = "Список имен ресурсов. Каждому имени должен соответствовать отдельный CIDR в subnet_cidr_list."
+    description = "Список имен ресурсов, которым нужна отдельаня подсеть. Каждому имени должен соответствовать отдельный CIDR в subnet_cidr_list."
     default = ["web", "db"]
     validation {
         condition = length(var.subnet_cidr_list) == length(var.resource_names_list)
@@ -20,9 +20,16 @@ variable "resource_names_list" {
     }
 }
 
+variable "resource_type_list" {
+    type = list(string)
+    description = "Список типов ресурсов."
+    default = ["vm", "cluster", "registry"]
+}
+
 variable "default_zone" {
     type = string
     default = "ru-central1-a"
+    description = "Зона доступности по умолчанию."
 }
 
 variable "cloud_id" {
@@ -77,6 +84,12 @@ variable "vm_docker_gpg_keyid" {
     description = "Отпечаток GPG ключа APT репозитория Docker"
 }
 
+variable "vm_git_branch" {
+    type = string
+    default = "main"
+    description = "Ветка репозитория из которой берутся файлы приложения."
+}
+
 # Переменные для DB
 
 variable "db_cluster_params" {
@@ -91,6 +104,7 @@ variable "db_cluster_params" {
             disk_type_id = string
         }
     ))
+    description = "Параметры кластера MySQL."
 }
 
 variable "db_params" {
@@ -99,16 +113,19 @@ variable "db_params" {
         name = "test"
         user = "me"
     }
+    description = "Параметры базы данных."
 }
 
 variable "db_password" {
     sensitive = true
     type = string
+    description = "Пароль для доступа в базу данных."
 }
 
 variable "db_user_priviliges" {
     type = list(string)
     default = ["ALL"]
+    description = "Роли пользователя базы данных"
 }
 
 # Переменные для Registry
@@ -116,19 +133,29 @@ variable "db_user_priviliges" {
 variable "regsitry_docker_image_name" {
     type = string
     default = "python-web"
+    description = "Имя образа, которое присваиватся собранному Docker образу."
 }
 
 variable "registry_docker_image_tags" {
     type = list(string)
     default = ["1.0", "latest"]
+    description = "Список тегов Docker образа."
 }
 
 variable "registry_address" {
     type = string
     default = "cr.yandex"
+    description = "Адрес удаленного реестра."
+}
+
+variable "registry_roles" {
+    type = list(string)
+    default = ["container-registry.images.puller"]
+    description = "Список ролей для registry."
 }
 
 variable "dockerfile_path" {
     type = string
     default = "./python-web/."
+    description = "Путь к Dockerfile для сборки."
 }

@@ -3,7 +3,7 @@ data "yandex_compute_image" "vm_image" {
 }
 
 resource "yandex_compute_instance" "web_vm" {
-    name = var.resource_names_list[0]
+    name = "${var.env_names[0]}-${var.resource_names_list[0]}-${var.resource_type_list[0]}"
     hostname = var.resource_names_list[0]
     platform_id = var.vm_params[0].platform_id
     resources {
@@ -44,5 +44,6 @@ data "template_file" "cloud-init" {
         mysql_user = var.db_params.user
         mysql_password = var.db_password
         mysql_database = var.db_params.name
+        git_branch = var.vm_git_branch
     }
 }

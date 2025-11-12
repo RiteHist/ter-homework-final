@@ -31,10 +31,13 @@ No modules.
 | <a name="input_docker_image_name"></a> [docker\_image\_name](#input\_docker\_image\_name) | Имя образа Docker. | `string` | n/a | yes |
 | <a name="input_docker_image_tags"></a> [docker\_image\_tags](#input\_docker\_image\_tags) | Список тегов для образа Docker. | `list(string)` | n/a | yes |
 | <a name="input_dockerfile_path"></a> [dockerfile\_path](#input\_dockerfile\_path) | Путь до Dockerfile. | `string` | n/a | yes |
+| <a name="input_keep_image_locally"></a> [keep\_image\_locally](#input\_keep\_image\_locally) | Поведение относительно образа при terraform delete. | `bool` | `false` | no |
 | <a name="input_registry_address"></a> [registry\_address](#input\_registry\_address) | Адрес удаленного реестра. | `string` | n/a | yes |
 | <a name="input_registry_id"></a> [registry\_id](#input\_registry\_id) | ID реестра. | `string` | n/a | yes |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_docker_image_name"></a> [docker\_image\_name](#output\_docker\_image\_name) | n/a |
 <!-- END_TF_DOCS -->
